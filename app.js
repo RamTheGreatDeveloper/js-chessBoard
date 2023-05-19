@@ -64,7 +64,6 @@ function dragDrop(e) {
     const valid = checkIfValid(e.target);
     const opponentGo = playerGo === 'white' ? 'black' : 'white';
     const takenByOpponent = e.target.firstChild?.classList.contains(opponentGo);
-    // e.target.append(draggedElement)
     if (correctGo) {
         //must check the first
         if (takenByOpponent && valid) {
@@ -74,7 +73,6 @@ function dragDrop(e) {
             changePlayer();
             return;
         }
-
         //then check this
         if (taken && !takenByOpponent) {
             playerDisplay.textContent = "You cannot go here!";
@@ -96,11 +94,8 @@ function dragDrop(e) {
 
 function checkIfValid(target) {
     const targetId = Number(target.getAttribute('square-id')) || Number(target.parentNode.getAttribute('square-id'));
-    console.log("🚀 ~ file: app.js:97 ~ checkIfValid ~ targetId:", targetId)
     const startId = Number(startPositionId);
-    console.log("🚀 ~ file: app.js:99 ~ checkIfValid ~ startId:", startId)
     const piece = draggedElement.id;
-    console.log("🚀 ~ file: app.js:101 ~ checkIfValid ~ piece:", piece)
     switch (piece) {
         case 'pawn':
             const starterRow = [8, 9, 10, 11, 12, 13, 14, 15];
